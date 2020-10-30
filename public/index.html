@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocketIO</title>
+</head>
+<body>
+
+    <h1>SocketIO</h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        socket.on('connect', function(){
+            console.log('client is connect')
+        })
+
+        socket.on('disconnect', function(){
+            console.log('client is disconnect')
+        })
+
+        socket.emit('mensaje', {nombre: 'Carlos'})
+
+        socket.on('mensaje', function(payload){
+            console.log('server: ', payload)
+        })
+    </script>
+    
+</body>
+</html>
